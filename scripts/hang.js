@@ -19,8 +19,6 @@ function createSVG(src, className) {
 }
 
 function drawHangman() {
-
-    console.log("Entered Function")
     const hangmanDiv = document.querySelector('.hang');
     hangmanDiv.appendChild(parts[wrongGuesses]);
     wrongGuesses++

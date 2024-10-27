@@ -2,6 +2,7 @@
 
 let selectedWord; // var to store selected word 
 const lines = []; //array to store lines 
+const wrong_characters = []
 
 //generating random words defined in an array 
 function randomWord() {
@@ -29,13 +30,16 @@ for (let i = 0; i < selectedWord.length; i++) {
 const letterElements = document.querySelectorAll('.letter');
 letterElements.forEach(letter => {
     letter.addEventListener('click', () => {
-        console.log(`Letter clicked: ${letter.textContent}`); // only for debugging
 
         const clickedLetter = letter.textContent.trim();// storing
 
+        if (wrong_characters.includes(clickedLetter) && wrong_characters.length > 0) {
+            alert("You already clicked this letter")
+            return;
+        }
         // checking if the letter clicked belongs to the word
         if (selectedWord.includes(clickedLetter)) {
-            console.log(`the letter "${clickedLetter}" is in the word`);
+            console.log(`The letter "${clickedLetter}" is in the word`);
 
             for (let i = 0; i < selectedWord.length; i++) {
                 if (selectedWord[i] === clickedLetter) {
@@ -44,7 +48,8 @@ letterElements.forEach(letter => {
                 }
             }
         } else {
-            console.log(`the letter "${clickedLetter}" is not in the word`); // only for debugging 
+            console.log(`The letter "${clickedLetter}" is not in the word`); // only for debugging 
+            wrong_characters.push(clickedLetter)
             drawHangman();
         }
 
