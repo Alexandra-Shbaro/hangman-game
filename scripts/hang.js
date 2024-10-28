@@ -1,6 +1,5 @@
 let wrongGuesses = 0;
 
-// defining body parts as an array of SVG elements created directly
 const parts = [
     createSVG('./assets/head.svg', 'head'),
     createSVG('./assets/body.svg', 'body'),
@@ -10,7 +9,6 @@ const parts = [
     createSVG('./assets/right-leg.svg', 'right-leg')
 ];
 
-// function to create an SVG directly
 function createSVG(src, className) {
     const img = document.createElement('img');
     img.setAttribute('src', src);
